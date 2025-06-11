@@ -7,13 +7,13 @@ const mongoose = require("mongoose");
 const { writer } = require('repl');
 const { title } = require('process');
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json()); // Ensure you can parse JSON bodies if needed
+app.use(express.json()); 
+require('dotenv').config(); 
 
 signed_in = 0;
 
 const port = 3000;
-const dburi =
-  "mongodb+srv://anush:anush123@cluster0.pmpjv44.mongodb.net/aaablogs?retryWrites=true&w=majority&appName=Cluster0";
+const dburi = process.env.DBURI;
 mongoose
   .connect(dburi)
   .then((results) =>
